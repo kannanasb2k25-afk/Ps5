@@ -1,13 +1,710 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pen</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Costco Member Clearance — Claim Your .97 Reward Code</title>
+  <style>
+    :root {
+      --costco-red: #E31837;
+      --costco-red-dark: #b8112b;
+      --costco-blue: #005DAA;
+      --costco-blue-dark: #00437c;
+      --bg-light: #F3F5F8;
+      --text-dark: #111827;
+      --text-muted: #4B5563;
+      --card-bg: #FFFFFF;
+      --badge-gold: #FEF3C7;
+      --badge-gold-text: #92400E;
+    }
 
-    <script src="./script.js"></script>
-  </body>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.5;
+      padding-bottom: 95px;
+    }
+
+    /* Top Costco Urgency Bar */
+    .top-banner {
+      background: var(--costco-blue);
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 9px 12px;
+      letter-spacing: 0.3px;
+      border-bottom: 3px solid var(--costco-red);
+    }
+
+    .top-banner span {
+      color: #FDE047;
+    }
+
+    /* Centered Big Official Costco Logo Header */
+    .header {
+      background: #FFFFFF;
+      padding: 18px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #E5E7EB;
+      gap: 10px;
+    }
+
+    .costco-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .costco-logo-img {
+      width: 215px;
+      max-width: 65%;
+      height: auto;
+      display: block;
+    }
+
+    .status-pill {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #10B981;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Hero Offer Card */
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px 18px;
+      box-shadow: 0 10px 25px rgba(0, 45, 90, 0.08);
+      border-top: 5px solid var(--costco-red);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .markdown-tag {
+      display: inline-block;
+      background: #111827;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+    }
+
+    .markdown-tag span {
+      color: #FDE047;
+    }
+
+    h1 {
+      font-size: 23px;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.22;
+      margin-bottom: 8px;
+    }
+
+    h1 .highlight-blue {
+      color: var(--costco-blue);
+    }
+
+    h1 .highlight-red {
+      color: var(--costco-red);
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* Costco Price Placard Mockup */
+    .placard-box {
+      background: #FFFFFF;
+      border: 3px solid #111827;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 0 auto 18px;
+      max-width: 310px;
+      text-align: left;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .placard-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      font-weight: 800;
+      color: #374151;
+      border-bottom: 1.5px solid #111827;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+
+    .placard-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .placard-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .placard-price {
+      font-size: 32px;
+      font-weight: 900;
+      color: #111827;
+      letter-spacing: -1px;
+    }
+
+    .placard-asterisk {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--costco-red);
+    }
+
+    .placard-retail {
+      font-size: 12px;
+      color: #6B7280;
+      text-decoration: line-through;
+      font-weight: 600;
+    }
+
+    /* Primary CTA Button */
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(180deg, var(--costco-red) 0%, var(--costco-red-dark) 100%);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 900;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(227, 24, 55, 0.35);
+      transition: transform 0.15s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      text-align: center;
+    }
+
+    .cta-btn:active {
+      transform: scale(0.98);
+    }
+
+    .cta-subtext {
+      font-size: 11.5px;
+      color: #6B7280;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* Inventory & Timer Strip */
+    .timer-card {
+      background: #EFF6FF;
+      border: 1.5px solid #BFDBFE;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .timer-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--costco-blue-dark);
+    }
+
+    .timer-clock {
+      background: var(--costco-blue);
+      color: #FFFFFF;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Step-by-Step Card */
+    .card-box {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 16.5px;
+      font-weight: 900;
+      color: var(--costco-blue);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      min-width: 28px;
+      height: 28px;
+      background: var(--costco-blue);
+      color: #FFFFFF;
+      font-weight: 900;
+      font-size: 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .step-content h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .step-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .spam-note {
+      background: var(--badge-gold);
+      color: var(--badge-gold-text);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin-top: 12px;
+      border-left: 4px solid #F59E0B;
+    }
+
+    /* FAQ Accordion Styling */
+    .faq-item {
+      border-bottom: 1px solid #E5E7EB;
+      padding: 12px 0;
+    }
+
+    .faq-item:first-of-type {
+      padding-top: 2px;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+      padding-bottom: 2px;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 2px 0;
+    }
+
+    .faq-icon {
+      color: var(--costco-red);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* Footer */
+    .trust-footer {
+      text-align: center;
+      font-size: 11px;
+      color: #9CA3AF;
+      padding: 8px 8px 16px;
+    }
+
+    /* Social Proof Pop-up Toast */
+    .social-toast {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(130%);
+      width: calc(100% - 28px);
+      max-width: 440px;
+      background: #FFFFFF;
+      border-left: 5px solid var(--costco-blue);
+      border-top: 1px solid #E5E7EB;
+      border-right: 1px solid #E5E7EB;
+      border-bottom: 1px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 11px 14px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 9999;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .social-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast-badge {
+      background: var(--costco-red);
+      color: #FFFFFF;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 8px 9px;
+      border-radius: 10px;
+      white-space: nowrap;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .toast-badge small {
+      display: block;
+      font-size: 9px;
+      font-weight: 700;
+      opacity: 0.9;
+      text-transform: uppercase;
+    }
+
+    .toast-body {
+      flex: 1;
+      font-size: 12.5px;
+      color: var(--text-dark);
+      line-height: 1.35;
+    }
+
+    .toast-body strong {
+      color: var(--costco-blue);
+    }
+
+    .toast-meta {
+      font-size: 11px;
+      color: #059669;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Wholesale Alert Banner -->
+  <div class="top-banner">
+    🚨 EARLY BLACK FRIDAY WAREHOUSE EVENT: <span>.97 CLEARANCE CODES ACTIVE</span>
+  </div>
+
+  <!-- Centered Official Costco Logo Header -->
+  <header class="header">
+    <div class="costco-logo-wrap">
+      <!-- Official Costco Wholesale SVG Logo -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/5/59/Costco_Wholesale_logo_2010-10-26.svg"
+        alt="Costco Wholesale"
+        class="costco-logo-img"
+      />
+    </div>
+    <div class="status-pill">
+      <span class="pulse-dot"></span>
+      <span>14 Clearance Codes Left Today</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Main Offer Card -->
+    <section class="hero-card">
+      <div class="markdown-tag">MANAGER MARKDOWN <span>.97</span> SPECIAL</div>
+      <h1>Claim Your <span class="highlight-red">Costco</span> <span class="highlight-blue">Clearance Voucher</span> Up To $750</h1>
+      <p class="subtitle">Unlock your secret digital voucher code for warehouse &amp; online electronics bundles before midnight.</p>
+
+      <!-- Authentic Costco .97 Price Placard -->
+      <div class="placard-box">
+        <div class="placard-header">
+          <span>ITEM #1784920</span>
+          <span>WAREHOUSE / ONLINE</span>
+        </div>
+        <div class="placard-title">PS5 SLIM CONSOLE + 2 CONTROLLERS BUNDLE</div>
+        <div class="placard-price-row">
+          <div>
+            <span class="placard-price">$149.97</span>
+            <span class="placard-asterisk">*</span>
+          </div>
+          <span class="placard-retail">REG. $699.99</span>
+        </div>
+      </div>
+
+      <a href="https://giftclick.org/?offer_id=1322&aff_id=12436" class="cta-btn">
+        Claim Secret Code Now &rarr;
+      </a>
+      <div class="cta-subtext">Works In-Warehouse &amp; Online at Checkout • No Membership Renewal Required</div>
+    </section>
+
+    <!-- Live Reservation Countdown -->
+    <div class="timer-card">
+      <div class="timer-label">⏳ Your session spot is reserved for:</div>
+      <div class="timer-clock" id="countdown">04:59</div>
+    </div>
+
+    <!-- How It Works Steps -->
+    <section class="card-box">
+      <div class="section-title">📋 How To Get Your Secret Code:</div>
+
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Tap the Red Button Above</h3>
+          <p>Enter your best email address on the next page so our system can assign your .97 voucher.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Complete 2–3 Quick Sponsor Deals</h3>
+          <p>Finish 2–3 simple partner offers (free trials, app installs, or quick surveys) to verify your claim.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Receive Your Code via Email</h3>
+          <p>Your unique digital barcode &amp; promo code is sent straight to your inbox to use in-store or online.</p>
+        </div>
+      </div>
+
+      <div class="spam-note">
+        💡 <strong>Important:</strong> If you don't see your secret code in your primary inbox within 3 minutes, check your <strong>Spam / Promotions</strong> folder!
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions Section -->
+    <section class="card-box">
+      <div class="section-title">❓ Frequently Asked Questions</div>
+
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do I need a paid Costco Membership to use this code?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No! Your digital voucher &amp; Shop Card barcode works both online at Costco.com (without a membership login on eligible items) and at any US warehouse register when presented as a digital Shop Card voucher.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What does the ".97" price tag mean?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          In Costco warehouses, prices ending in <strong>.97</strong> indicate official Manager Markdowns and unadvertised clearance inventory. Once allocated codes are claimed, the offer closes automatically.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Why do I need to complete 2–3 sponsor deals?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Our advertising sponsors fund these promotional reward vouchers so we can offer them at zero direct cost to shoppers while preventing automated bots from claiming multiple codes.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How fast will I receive my voucher code?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          As soon as your 2–3 partner deals register as completed, your code is dispatched automatically via email—usually within 2 to 5 minutes. Be sure to check your Spam or Promotions tab just in case.
+        </div>
+      </div>
+
+      <a href="https://giftclick.org/?offer_id=1322&aff_id=12436" class="cta-btn" style="margin-top: 18px;">
+        Unlock My .97 Voucher &rarr;
+      </a>
+    </section>
+
+    <footer class="trust-footer">
+      Independent Promotional Rewards Program. Not affiliated with, endorsed by, or sponsored by Costco Wholesale Corporation. Trade names and trademarks belong to their respective owners.
+    </footer>
+
+  </main>
+
+  <!-- Rotating Social Proof Notification Toast -->
+  <div class="social-toast" id="socialToast">
+    <div class="toast-badge" id="toastAmount">
+      $450.97
+      <small>.97 Deal</small>
+    </div>
+    <div class="toast-body">
+      <div id="toastText"><strong>Tyler M.</strong> (Austin, TX) just unlocked a <strong>$450.97 Costco Gift Card</strong></div>
+      <div class="toast-meta" id="toastTime">✓ Verified 12 seconds ago</div>
+    </div>
+  </div>
+
+  <script>
+    // 1. FAQ Accordion Toggle
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // 2. 5-Minute Countdown Timer
+    let totalSeconds = 299;
+    const countdownEl = document.getElementById('countdown');
+
+    setInterval(() => {
+      if (totalSeconds <= 0) return;
+      totalSeconds--;
+      const mins = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+      const secs = String(totalSeconds % 60).padStart(2, '0');
+      countdownEl.textContent = `${mins}:${secs}`;
+    }, 1000);
+
+    // 3. 5 Rotating Costco .97 Gift Card Pop-Ups (Under $750 Max)
+    const notifications = [
+      {
+        amount: "$450.97",
+        name: "Tyler M.",
+        city: "Austin, TX",
+        time: "✓ Verified 9 seconds ago"
+      },
+      {
+        amount: "$525.97",
+        name: "Jessica R.",
+        city: "Tampa, FL",
+        time: "✓ Verified 18 seconds ago"
+      },
+      {
+        amount: "$600.97",
+        name: "Brandon K.",
+        city: "Seattle, WA",
+        time: "✓ Verified 24 seconds ago"
+      },
+      {
+        amount: "$689.97",
+        name: "Alyssa P.",
+        city: "Denver, CO",
+        time: "✓ Verified 31 seconds ago"
+      },
+      {
+        amount: "$749.97",
+        name: "Marcus D.",
+        city: "Phoenix, AZ",
+        time: "✓ Verified 42 seconds ago"
+      }
+    ];
+
+    let currentIndex = 0;
+    const toastEl = document.getElementById('socialToast');
+    const toastAmountEl = document.getElementById('toastAmount');
+    const toastTextEl = document.getElementById('toastText');
+    const toastTimeEl = document.getElementById('toastTime');
+
+    function showNextToast() {
+      const item = notifications[currentIndex];
+      toastAmountEl.innerHTML = `${item.amount}<small>.97 Code</small>`;
+      toastTextEl.innerHTML = `<strong>${item.name}</strong> (${item.city}) just claimed a <strong>${item.amount} Costco Gift Card</strong>`;
+      toastTimeEl.textContent = item.time;
+
+      toastEl.classList.add('show');
+
+      setTimeout(() => {
+        toastEl.classList.remove('show');
+      }, 3000);
+
+      currentIndex = (currentIndex + 1) % notifications.length;
+    }
+
+    setTimeout(() => {
+      showNextToast();
+      setInterval(showNextToast, 4200);
+    }, 1500);
+  </script>
+</body>
 </html>
